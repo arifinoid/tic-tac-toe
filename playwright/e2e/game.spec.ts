@@ -20,6 +20,8 @@ test("plays a full game to a win and starts a new game", async ({ page }) => {
   await expect(page.getByTestId("win-line")).toBeVisible();
   await expect(page.getByTestId("score-x")).toHaveText("1");
 
+  // Let the mark and win-line draw animations finish before capturing.
+  await page.waitForTimeout(800);
   await page.screenshot({
     path: "playwright/screenshots/win.png",
     fullPage: true,
