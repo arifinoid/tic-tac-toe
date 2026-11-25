@@ -60,3 +60,5 @@ See [CLAUDE.md](./CLAUDE.md) for the full rules and conventions.
 
 Import the GitHub repo into Vercel — zero config. Build command `npm run build`,
 no environment variables.
+
+Production URL: <https://tic-tac-toe-arifinoid.vercel.app>
