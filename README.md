@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tic-Tac-Toe — Ink & Editorial
 
-## Getting Started
+A stylised 3×3 tic-tac-toe built for the **Test 1: Tic-Tac-Toe React App**
+take-home challenge. Warm paper, ink-black serif type, and marks that draw
+themselves onto the grid.
 
-First, run the development server:
+![stack](https://img.shields.io/badge/Next.js_15-React_19-1a1712?logo=next.js)
+![tests](https://img.shields.io/badge/tests-Vitest_%7C_Playwright-b3402a)
+
+## Features
+
+- **Two players, locally** — alternate turns on one device.
+- **Vs AI** — a minimax opponent with Easy / Medium / Hard difficulty.
+  Hard is unbeatable.
+- **Scoreboard** — X wins, draws and O wins persist across games (localStorage).
+- **Hand-drawn marks** — X and O are SVG strokes animated with
+  `stroke-dashoffset`, respecting `prefers-reduced-motion`.
+- **Win-line strike-through** and a subtle pulse on the winning cells.
+- **WebAudio sounds** — quiet oscillator blips for moves, wins and draws,
+  with a mute toggle. No audio files.
+- Accessible: real buttons with descriptive labels, `aria-live` results,
+  full keyboard play.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command             | What it does                                          |
+| ------------------- | ----------------------------------------------------- |
+| `npm run dev`       | Dev server with Turbopack (port 3000)                 |
+| `npm run build`     | Production build                                      |
+| `npm run start`     | Serve the production build                            |
+| `npm run lint`      | ESLint 9 flat config                                  |
+| `npm run typecheck` | `tsc --noEmit`                                        |
+| `npm test`          | Vitest — pure game-logic unit tests                   |
+| `npm run test:e2e`  | Playwright — boots the dev server automatically       |
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+The game rules are **pure, framework-free TypeScript** in `src/lib/game/`
+(`engine`, `ai`, `reducer`, `score`), unit-tested in isolation. React only
+renders state and forwards clicks:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/lib/game/        pure logic — no React imports
+src/lib/hooks/       use-tic-tac-toe (useReducer + AI effect), use-local-storage, use-sound
+src/components/game/ presentational components (board, cell, marks, win-line, controls…)
+src/components/ui/   shadcn/ui primitives
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See [CLAUDE.md](./CLAUDE.md) for the full rules and conventions.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Import the GitHub repo into Vercel — zero config. Build command `npm run build`,
+no environment variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Submission
+
+- Live app URL: _Vercel production URL_
+- Screenshots: `playwright/screenshots/` (captured by the e2e run)
