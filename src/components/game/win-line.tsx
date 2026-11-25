@@ -16,7 +16,7 @@ export function WinLineOverlay({ line }: { line: WinLine }) {
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="pointer-events-none absolute inset-0 z-10 h-full w-full"
     >
       <line
         x1={geometry.x1}

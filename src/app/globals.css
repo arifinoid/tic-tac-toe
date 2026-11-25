@@ -121,6 +121,7 @@
      stroke-dashoffset from 1 to 0 "draws" the stroke. */
   .mark-stroke {
     fill: none;
+    stroke: currentColor;
     stroke-width: 9;
     stroke-linecap: round;
     stroke-linejoin: round;
