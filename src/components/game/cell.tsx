@@ -28,8 +28,10 @@ export function Cell({ index, value, disabled, isWinning, onPlay }: CellProps) {
       onClick={() => onPlay(index)}
       className={cn(
         "relative flex aspect-square items-center justify-center bg-paper-raised transition-colors duration-200",
-        "hover:bg-paper-deep/70 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:outline-none",
-        "disabled:cursor-default disabled:hover:bg-paper-raised",
+        // Hover feedback only on playable cells; winning cells keep their
+        // highlight (disabled:hover would otherwise out-rank it).
+        !isWinning &&
+          "hover:bg-paper-deep/70 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:outline-none disabled:cursor-default disabled:hover:bg-paper-raised",
         isWinning && "animate-cell-pulse bg-paper-deep/70 motion-reduce:animate-none",
       )}
     >
