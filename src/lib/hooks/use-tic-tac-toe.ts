@@ -56,10 +56,20 @@ export function useTicTacToe(): UseTicTacToe {
     dispatch({ type: "PLAY", index });
   }, []);
 
-  const newGame = useCallback(() => {
-    setAiThinking(false);
-    dispatch({ type: "RESET" });
-  }, []);
+  // In AI mode the human (X) always opens; in local mode the starter alternates
+  // so neither player keeps the first-move advantage.
+  const reset = useCallback(
+    (forMode: GameMode) => {
+      setAiThinking(false);
+      dispatch({
+        type: "RESET",
+        startingPlayer: forMode === "ai" ? "X" : undefined,
+      });
+    },
+    [],
+  );
+
+  const newGame = useCallback(() => reset(mode), [reset, mode]);
 
   // The AI move is an effect, not an event handler, so it is cancelled cleanly
   // on reset, unmount, or mode change (and is idempotent under StrictMode).
@@ -94,9 +104,9 @@ export function useTicTacToe(): UseTicTacToe {
   const changeMode = useCallback(
     (next: GameMode) => {
       setMode(next);
-      dispatch({ type: "RESET" });
+      reset(next);
     },
-    [setMode],
+    [setMode, reset],
   );
 
   const changeDifficulty = useCallback(
