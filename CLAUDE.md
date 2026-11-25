@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-**Tic-Tac-Toe — Ink & Editorial.** A take-home challenge build: a stylised 3×3
-tic-tac-toe with local two-player, an unbeatable AI, a persisted scoreboard,
-hand-drawn SVG marks, a win-line strike-through, and WebAudio sounds.
+**Tic-Tac-Toe — Ink & Editorial.** A stylised 3×3 tic-tac-toe with local
+two-player, an unbeatable AI, a persisted scoreboard, hand-drawn SVG marks,
+a win-line strike-through, and WebAudio sounds.
 
 Stack: Next.js 15 (App Router) · React 19 · Tailwind CSS v4 · shadcn/ui
 (`base-nova` style, `@base-ui/react`) · Vitest · Playwright. Deploy target: Vercel.

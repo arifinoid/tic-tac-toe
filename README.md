@@ -1,8 +1,7 @@
 # Tic-Tac-Toe — Ink & Editorial
 
-A stylised 3×3 tic-tac-toe built for the **Test 1: Tic-Tac-Toe React App**
-take-home challenge. Warm paper, ink-black serif type, and marks that draw
-themselves onto the grid.
+A stylised 3×3 tic-tac-toe. Warm paper, ink-black serif type, and marks that
+draw themselves onto the grid.
 
 ![stack](https://img.shields.io/badge/Next.js_15-React_19-1a1712?logo=next.js)
 ![tests](https://img.shields.io/badge/tests-Vitest_%7C_Playwright-b3402a)
@@ -61,8 +60,3 @@ See [CLAUDE.md](./CLAUDE.md) for the full rules and conventions.
 
 Import the GitHub repo into Vercel — zero config. Build command `npm run build`,
 no environment variables.
-
-## Submission
-
-- Live app URL: _Vercel production URL_
-- Screenshots: `playwright/screenshots/` (captured by the e2e run)
